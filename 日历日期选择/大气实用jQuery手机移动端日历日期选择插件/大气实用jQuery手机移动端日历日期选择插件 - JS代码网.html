@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0039)http://www.js-css.cn/jscode/date/date7/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="email=no">
+<title>大气实用jQuery手机移动端日历日期选择插件 - JS代码网</title>
+<meta name="keywords" content="移动端日历选择插件,手机端日历日期选择插件,jQuery移动日期选择,js移动端日历插件,手机端日历控件">
+<meta name="description" content="JS代码网提供高质量手机移动端日历日期控件下载">
+<link href="common.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript" src="date.js"></script>
+<script type="text/javascript" src="iscroll.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#beginTime').date();
+	$('#endTime').date({theme:"datetime"});
+});
+</script>
+</head>
+<body>   
+<style type="text/css">
+.demo{width:300px;margin:40px auto 0 auto;}
+.demo .lie{margin:0 0 20px 0;}
+</style>
+<div class="demo">
+	<div class="lie">日期设置-1:<input id="beginTime" class="kbtn"></div>
+	<div class="lie">日期设置-2:<input id="endTime" class="kbtn"></div>
+</div>
+<div id="datePlugin"><div id="dateshadow" style="display: none;"></div><div id="datePage" class="page" style="display: none;"><section><div id="datetitle"><h1>请选择日期</h1></div><div id="datemark"><a id="markyear"></a><a id="markmonth"></a><a id="markday"></a></div><div id="timemark"><a id="markhour"></a><a id="markminut"></a><a id="marksecond"></a></div><div id="datescroll"><div id="yearwrapper" style="overflow: hidden;"><ul style="-webkit-transition: -webkit-transform 0ms; transition: -webkit-transform 0ms; -webkit-transform-origin: 0px 0px; -webkit-transform: translate3d(0px, -560px, 0px) scale(1);"><li>&nbsp;</li><li>2000年</li><li>2001年</li><li>2002年</li><li>2003年</li><li>2004年</li><li>2005年</li><li>2006年</li><li>2007年</li><li>2008年</li><li>2009年</li><li>2010年</li><li>2011年</li><li>2012年</li><li>2013年</li><li>2014年</li><li>2015年</li><li>2016年</li><li>2017年</li><li>2018年</li><li>2019年</li><li>2020年</li><li>&nbsp;</li></ul></div><div id="monthwrapper" style="overflow: hidden;"><ul style="-webkit-transition: -webkit-transform 0ms; transition: -webkit-transform 0ms; -webkit-transform-origin: 0px 0px; -webkit-transform: translate3d(0px, -360px, 0px) scale(1);"><li>&nbsp;</li><li>01月</li><li>02月</li><li>03月</li><li>04月</li><li>05月</li><li>06月</li><li>07月</li><li>08月</li><li>09月</li><li>10月</li><li>11月</li><li>12月</li><li>&nbsp;</li></ul></div><div id="daywrapper" style="overflow: hidden;"><ul style="-webkit-transition: -webkit-transform 0ms; transition: -webkit-transform 0ms; -webkit-transform-origin: 0px 0px; -webkit-transform: translate3d(0px, -760px, 0px) scale(1);"><li>&nbsp;</li><li>1日</li><li>2日</li><li>3日</li><li>4日</li><li>5日</li><li>6日</li><li>7日</li><li>8日</li><li>9日</li><li>10日</li><li>11日</li><li>12日</li><li>13日</li><li>14日</li><li>15日</li><li>16日</li><li>17日</li><li>18日</li><li>19日</li><li>20日</li><li>21日</li><li>22日</li><li>23日</li><li>24日</li><li>25日</li><li>26日</li><li>27日</li><li>28日</li><li>29日</li><li>30日</li><li>31日</li><li>&nbsp;</li></ul></div></div><div id="datescroll_datetime"><div id="Hourwrapper"><ul></ul></div><div id="Minutewrapper"><ul></ul></div><div id="Secondwrapper"><ul></ul></div></div></section><footer id="dateFooter"><div id="setcancle"><ul><li id="dateconfirm">确定</li><li id="datecancle">取消</li></ul></div></footer></div></div>
+
+
+</body></html>

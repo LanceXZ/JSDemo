@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>原创INPUT输入框抖动特效插件wintrue</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="JS特效代码,jQuery输入框抖动,jQuery表单抖动提示,jQuery表单抖动特效,jQuery抖动效果,JS抖动特效,jQuery div抖动" />
+<meta name="description" content="JS代码网提供jQuery表单抖动提示特效下载，兼容性非常好，值得学习和下载" />
+<!--JS代码网顶部CSS-->
+<link href="http://www.js-css.cn/jscode/jscode.css" rel="stylesheet" />
+<!--JS代码网顶部CSS-->
+<style>
+*{margin:0;padding:0;}
+html,body{
+margin,padding:0;
+text-align:center;
+font-size:12px;
+}
+
+#login-right{
+border: 1px solid #FFBE7A;
+zoom: 1;
+width:400px;
+background: #FFFCED;
+padding: 8px 10px;
+line-height: 20px;
+margin-left:auto;
+margin-right:auto
+}
+</style>
+</head>
+
+<body>
+<!--JS代码网头部-->
+<div class="back" style="margin-bottom:20px;"> 
+  <div class="pl10">
+    <ul class="ulcls">
+	<li class="logowidth">
+	<a href="http://www.js-css.cn" title="JS代码网"><img src="http://www.js-css.cn/images/toplogo.png" border="0"/></a>	
+	</li>
+	<li style="width:800px;">
+	<div class="menupos">
+	<ul style="list-style:none;">
+	<li class="firstli"><a href="http://www.js-css.cn" class="lia">首页</a></li>
+	<li class="sencli"><a href="http://www.js-css.cn/a/jscode/" class="lia">JS代码大全</a></li>
+	<li class="threeli"><a href="http://www.js-css.cn/a/openframe/jqueryapi/" class="lia">jQuery 插件</a></li>
+	<li class="threeli"><a href="http://www.js-css.cn/a/css/" class="lia">DIV+CSS</a></li>
+	<li class="threeli"><a href="http://www.js-css.cn/a/html5/" class="lia">HTML5+CSS3</a></li>
+	<li class="threeli"><a href="http://www.js-css.cn/a/openframe/" class="lia">开源项目</a></li>
+	<li class="threeli"><a href="http://www.js-css.cn/a/tools/" class="lia">资源工具</a></li>	
+	</ul>
+	</div>
+	</li>     
+    </ul>
+  </div>
+  <div class="textpos">整理：<a href="http://www.js-css.cn" class="texta">JS代码网</a><br>来源：<a href="#" class="texta">互联网</a> <br>本站QQ交流学习群：<a href="#" class="texta">281362453</a> <br> 赞助网店：<a href="http://wuhaodian.taobao.com" class="texta">http://wuhaodian.taobao.com</a></div>
+</div>
+<!--JS代码网头部-->
+
+    <div id="login-right" >
+		<form action="#" method="post" onSubmit="return check()">
+			  <dl class="login-pannel">
+				<dd>
+				  昵称：<input type="text"  name="uname" id="uname" /><br><br>
+				</dd>
+				<dd>
+				  密码：<input type="password" name="pwd" id="pwd"/><br><br>
+				</dd>
+				<dd >
+				  <input type="button" id="demo" value="让DIV摆动" />
+				  <input type="button" id="demo1" value="让控件摆动" />
+				  <input type="button" id="demo2" value="让自己摆动" />
+				</dd>
+				<dd >
+				  <input type="button" id="demo3" value="让控件摆动幅度大点" />
+				  <input type="button" id="demo4" value="让控件摆动时间久点" />
+				  <input type="button" id="demo5" value="让控件摆动速度飞快" />
+				</dd>
+			  </dl>
+			
+	  </form>
+    </div>
+</body>
+
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/wintrue.js"></script>
+<script>
+$(function(){
+	var user=document.getElementById('uname');
+	var pwd=document.getElementById('pwd');
+		
+	$("#demo").click(function(){
+		flash('#login-right',8,10,100);
+	
+	});
+	$("#demo1").click(function(){
+		flash('#uname',8,10,100);
+		$("#uname").focus();
+		$("#uname").css({ background: "#FFFF66" });
+	
+	});
+	$("#demo2").click(function(){
+		flash(this,8,10,100);
+	});
+	$("#demo3").click(function(){
+		flash("#login-right",8,30,100);
+	});
+	$("#demo4").click(function(){
+		flash("#login-right",20,10,100);
+	});
+	$("#demo5").click(function(){
+		flash("#login-right",15,15,50);
+	});
+
+})
+
+</script>

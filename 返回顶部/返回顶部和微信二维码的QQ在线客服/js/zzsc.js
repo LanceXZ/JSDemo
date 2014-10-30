@@ -1,0 +1,19 @@
+$(function(){
+    $('#open_im').bind('click',function(e){
+        $('#im_main').show();
+        $(this).hide();
+    });
+    $('#close_im').bind('click',function(){
+		$('#im_main').hide();
+		$('#open_im').show();
+	});
+	$('.go-top').bind('click',function(){
+		$('html,body').animate({scrollTop:0},1000);
+	});
+	$(".weixing-container").bind('mouseenter',function(){
+		$('.weixing-show').show();
+	})
+	$(".weixing-container").bind('mouseleave',function(){        
+		$('.weixing-show').hide();
+	});
+});

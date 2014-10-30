@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0 auto;padding:0;}
+dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td,select{font-family:Arial,Microsoft Yahei,'微软雅黑','宋体'; *font-family:Microsoft Yahei,'微软雅黑','宋体'}
+body{font-size:12px;color:#666; font-family:"\5FAE\8F6F\96C5\9ED1",Arial,Microsoft Yahei,'微软雅黑','宋体'; *font-family:Microsoft Yahei,'微软雅黑','宋体';height:2000px;}
+dl, dt, dd, ul, ol, li{list-style:none;}
+h3{font-size:14px}
+h4{font-size:13px;}
+a{text-decoration:none;cursor:pointer;color:#666;}
+a:hover{color:#F27522;text-decoration:none;}
+image{border:0;}
+input,textarea,button,a{outline: none;}
+.blue{color:#06c;}
+.gray{color:#888;font-size:12px;}
+.graya{color:#A7A7A7;font-size:14px;}
+.hui {color:#ccc;}
+.hui01{color:#666;}
+.orange{color:#f90;}
+.green{color:#093;}
+.orangea{color:#FF8432}
+.mumornge{color:#f60;}
+.red{color:#F00;}
+.reda{color:#f00;}
+.whitec{color:white;}
+.white{background:white;}
+.common{width:980px;margin:0 auto;margin-top:10px;}
+.common_b{width:980px;margin:0 auto;}
+.commonc{width:100%;float:left;}
+.fourtn{font-size:16px;}
+.clear{clear:both;}
+.clearfix:after{content:""; height:0; visibility:hidden; display:table; clear:both;}
+.clearfix{ zoom:1;}
+.right{float:right;}
+.left{float:left;}
+/*
+本代码由JS代码网收集并编辑整理;
+尊重他人劳动成果;
+转载请保留素材家园链接 - www.js-css.cn
+*/
