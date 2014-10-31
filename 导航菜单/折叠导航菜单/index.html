@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>网友分享jQuery实现后台常用左侧折叠导航菜单特效 - JS代码网</title>
+    <meta name="author" content="JS代码网"/>
+    <meta name="keywords" content="JS代码,JS代码大全,JS折叠导航菜单,导航菜单代码,jQuery折叠菜单特效,JS后台左侧菜单,折叠导航菜单特效"/>
+    <meta name="description" content="经常使用的后台左侧折叠菜单特效,JS折叠菜单,左侧导航菜单,兼容性非常好,JS代码网推荐下载"/>
+    <link href="http://www.js-css.cn/jscode/jscode.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.box h1:first').addClass('active');
+            $('.box p:not(:first)').hide();
+            $('.box h1').click(function(){
+                $(this).toggleClass('active').siblings('h1').removeClass('active');
+                $(this).next('p').slideToggle().siblings('p').slideUp();
+            })
+        });
+    </script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: 12px 微 软 雅 黑;
+        }
+
+        .box {
+            width: 500px;
+            border-bottom: 1px solid #ccc;
+            margin: 50px auto;
+        }
+
+        .box h1 {
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+            font-size: 12px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            background: #eee url(img/bg.png) no-repeat right -30px;
+        }
+
+        .box h1.hover {
+            background-color: none;
+        }
+
+        .box h1.active {
+            background-position: right 7px;
+        }
+
+        .box p {
+            padding: 10px;
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+<!--JS代码网头部-->
+<div class="back" style="margin-bottom:20px;">
+    <div class="pl10">
+        <ul class="ulcls">
+            <li class="logowidth">
+                <a href="http://www.js-css.cn" title="JS代码网"><img src="http://www.js-css.cn/images/toplogo.png"
+                                                                  border="0"/></a>
+            </li>
+            <li style="width:800px;">
+                <div class="menupos">
+                    <ul style="list-style:none;">
+                        <li class="firstli"><a href="http://www.js-css.cn" class="lia">首页</a></li>
+                        <li class="sencli"><a href="http://www.js-css.cn/a/jscode/" class="lia">JS代码大全</a></li>
+                        <li class="threeli"><a href="http://www.js-css.cn/a/css/" class="lia">CSS样式</a></li>
+                        <li class="threeli"><a href="http://www.js-css.cn/a/html5/" class="lia">HTML5</a></li>
+                        <li class="threeli"><a href="http://www.js-css.cn/a/openframe/" class="lia">开源项目</a></li>
+                        <li class="threeli"><a href="http://www.js-css.cn/a/tools/" class="lia">资源工具</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="textpos">整理：<a href="http://www.js-css.cn" class="texta">JS代码网</a><br>来源：<a href="#"
+                                                                                            class="texta">互联网</a> <br>本站QQ交流学习群：<a
+            href="#" class="texta">281362453</a> <br> 赞助网店：<a href="http://wuhaodian.taobao.com" class="texta">http://wuhaodian.taobao.com</a>
+    </div>
+</div>
+<!--JS代码网头部-->
+<div class="box">
+    <h1>菜单一</h1>
+
+    <p>内容</p>
+
+    <h1>菜单二</h1>
+
+    <p>内容</p>
+
+    <h1>菜单三</h1>
+
+    <p>内容</p>
+
+    <h1>菜单四</h1>
+
+    <p>内容</p>
+
+    <h1>菜单五</h1>
+
+    <p>内容</p>
+</div>
+</body>
+</html>
