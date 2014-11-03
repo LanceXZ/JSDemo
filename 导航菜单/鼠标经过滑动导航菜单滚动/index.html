@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>jQuery实现鼠标经过滑动导航菜单滚动菜单特效,JS滑动导航菜单效果 - JS代码网</title>
+    <meta name="author" content="JS代码网"/>
+    <meta name="keywords" content="JS代码,JS特效,JS代码大全,jQuery滑动导航菜单,JS滑动导航菜单,滚动菜单,JS导航菜单"/>
+    <meta name="description" content="非常漂亮的的jQuery鼠标经过滑动导航菜单,JS滑动导航菜单,兼容性非常好,JS代码网推荐下载"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <!--JS代码网顶部CSS-->
+    <link href="http://www.js-css.cn/jscode/jscode.css" rel="stylesheet"/>
+    <!--JS代码网顶部CSS-->
+    <link rel="stylesheet" href="style.css"/>
+    <style>
+        .menu {
+            height: 45px;
+            display: block;
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu ul li {
+            float: left; /* 菜单子元素的内容超出不可见 */
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            line-height: 45px;
+        }
+
+        .menu ul li a {
+            /* 必须是相对定位  */
+            position: relative;
+            display: block;
+            width: 110px;
+            height: 45px;
+            font-family: Arial;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .menu ul li a span {
+            /* 所有层将使用绝对定位 */
+            position: absolute;
+            left: 0;
+            width: 110px;
+        }
+
+        .menu ul li a span.out {
+            top: 0px;
+        }
+
+        .menu ul li a span.over, .menu ul li a span.bg {
+            /* 起初.over层和.bg层相对a元素-45px以达到隐藏 */
+            top: -45px;
+        }
+
+        /** 完整版示例 **/
+
+        #menu {
+            background: url(images/bg_menu.gif) scroll 0 -1px repeat-x;
+            border: 1px solid #CCC;
+        }
+
+        #menu ul li a {
+            color: #000;
+        }
+
+        #menu ul li a span.over {
+            color: #FFF;
+        }
+
+        #menu ul li span.bg {
+            height: 45px;
+            background: url(images/bg_over.gif) center center no-repeat;
+        }
+
+        /** 简化版示例 **/
+
+        #menu2 {
+            background: #45A8DF;
+        }
+
+        #menu2 ul li a {
+            color: #FFF;
+        }
+
+        #menu2 ul li a span.over {
+            background: #A6DD00;
+            color: #333;
+        }
+
+        #menu2 ul li.nav1 a span.over {
+            background: #fea274;
+        }
+
+        #menu2 ul li.nav2 a span.over {
+            background: #b0bbba;
+        }
+
+        #menu2 ul li.nav3 a span.over {
+            background: #a3f091;
+        }
+
+        #menu2 ul li.nav4 a span.over {
+            background: #86dbf9;
+        }
+
+        #menu2 ul li.nav5 a span.over {
+            background: #e0caf0;
+        }
+
+        #menu2 ul li.nav6 a span.over {
+            background: #9dace9;
+        }
+
+        a {
+            text-decoration: none;
+            outline: none;
+            color: #666666;
+        }
+
+        a:hover {
+            text-decoration: none
+        }
+
+        img {
+            border: 0
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        h2 {
+            color: #6CBD45;
+            font-size: 14px;
+            font-weight: bold;
+            padding-bottom: 0.5em;
+            margin: 0;
+        }
+
+        h3 {
+            font-size: 13px;
+            font-weight: bold;
+
+        }
+
+        #meun {
+            color: #fff;
+            padding-left: 10px;
+        }
+
+        #meun img {
+            float: left;
+        }
+
+        #submeun {
+            margin-left: 70px;
+            float: left;
+        }
+
+        #submeun li {
+            text-align: center;
+            margin-right: 10px;
+            float: left;
+            display: inline;
+        }
+
+        #submeun li a {
+            color: #fff;
+            height: 50px;
+            line-height: 50px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            padding-left: 15px;
+            padding-right: 15px;
+            display: block;
+        }
+
+        #submeun li.cur {
+            text-align: center;
+            background: #82ce18;
+            margin-right: 10px;
+            float: left;
+            display: inline;
+        }
+
+        #top {
+            background-color: #000;
+            margin: 0em 0 10px 0em;
+
+            border-style: solid;
+            border-width: 1px;
+            border-color: #E5E5E5;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        h2.subtitle {
+            font-size: 13px;
+            float: right;
+            color: #6CBD45;
+            margin: 0 10px;
+            text-align: right;
+        }
+
+        h1.title {
+            height: 50px;
+            font-size: 12px;
+            background: url(logo.png) no-repeat;
+
+        }
+
+        h1.title a:link, h1.title a:visited, h1.title a:hover {
+            color: #000;
+            text-decoration: none;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script language="javascript">
+        $(document).ready(function () {
+
+            /* 	完整版示例	*/
+
+            // 把每个a中的内容包含到一个层（span.out）中，在span.out层后面追加背景图层（span.bg）
+//            $("#menu li a").wrapInner('<span class="out"></span>').append('<span class="bg"></span>');
+//
+//            // 循环为菜单的a每个添加一个层（span.over）
+//            $("#menu li a").each(function () {
+//                $('<span class="over">' + $(this).text() + '</span>').appendTo(this);
+//            });
+//
+//            $("#menu li a").hover(function () {
+//                // 鼠标经过时候被触发的函数
+//                $(".out", this).stop().animate({'top': '45px'}, 250); // 向下滑动 - 隐藏
+//                $(".over", this).stop().animate({'top': '0px'}, 250); // 向下滑动 - 显示
+//                $(".bg", this).stop().animate({'top': '0px'}, 120); // 向下滑动 - 显示
+//
+//            }, function () {
+//                // 鼠标移出时候被触发的函数
+//                $(".out", this).stop().animate({'top': '0px'}, 250); // 向上滑动 - 显示
+//                $(".over", this).stop().animate({'top': '-45px'}, 250); // 向上滑动 - 隐藏
+//                $(".bg", this).stop().animate({'top': '-45px'}, 120); // 向上滑动 - 隐藏
+//            });
+
+
+            /*	简化版示例	*/
+
+            $("#menu2 li a").wrapInner('<span class="out"></span>');
+
+            $("#menu2 li a").each(function () {
+                $('<span class="over">' + $(this).text() + '</span>').appendTo(this);
+            });
+
+            $("#menu2 li a").hover(function () {
+                $(".out", this).stop().animate({'top': '45px'}, 200); // 向下滑动 - 隐藏
+                $(".over", this).stop().animate({'top': '0px'}, 200); // 向下滑动 - 显示
+
+            }, function () {
+                $(".out", this).stop().animate({'top': '0px'}, 200); // 向上滑动 - 显示
+                $(".over", this).stop().animate({'top': '-45px'}, 200); // 向上滑动 - 隐藏
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+
+<div id="content">
+
+    <p>&nbsp;带图示例</p>
+    <br/>
+
+    <div id="menu" class="menu">
+        <ul>
+            <li><a href="javascript:;">Home</a></li>
+            <li><a href="javascript:;">HTML/CSS</a></li>
+            <li><a href="javascript:;">JavaScript</a></li>
+            <li><a href="javascript:;">Resources</a></li>
+            <li><a href="javascript:;">Tutorials</a></li>
+            <li><a href="javascript:;">About</a></li>
+        </ul>
+    </div>
+    <p>&nbsp;</p>
+
+    <p>&nbsp;无图示例</p>
+    <br/>
+
+    <div id="menu2" class="menu">
+        <ul>
+            <li class="nav1"><a href="javascript:;">Home</a></li>
+            <li class="nav2"><a href="javascript:;">HTML/CSS</a></li>
+            <li class="nav3"><a href="javascript:;">JavaScript</a></li>
+            <li class="nav4"><a href="javascript:;">Resources</a></li>
+            <li class="nav5"><a href="javascript:;">Tutorials</a></li>
+            <li class="nav6"><a href="javascript:;">About</a></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
