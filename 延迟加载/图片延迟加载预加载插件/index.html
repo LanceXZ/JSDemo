@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>jQuery图片延迟加载预加载插件Lazy Load</title>
+  <meta charset="utf-8">
+  <meta name="keywords" content="jQuery插件,jQuery图片预加载,jQuery Lazyload,jQuery懒加载,jQuery图片懒加载,jQuery延迟加载" />
+  <meta name="description" content="JS代码网提供jQuery图片预加载,懒加载,延迟加载特效插件下载" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+  <![endif]-->
+  <style type="text/css">
+    *{margin:0px;font-size:12px;}
+	.container{margin:0 auto;width:800px;}
+	.container img {
+      margin-bottom: 10px;
+    }
+	h1{font-size:30px;height:50px;line-height:60px;}
+  </style>
+  <!--JS代码网顶部CSS-->
+<link href="http://www.js-css.cn/jscode/jscode.css" rel="stylesheet" />
+<!--JS代码网顶部CSS-->
+</head>
+<body>
+<!--JS代码网头部-->
+<div class="back" style="margin-bottom:20px;"> 
+  <div class="pl10">
+    <ul class="ulcls">
+	<li class="logowidth">
+	<a href="http://www.js-css.cn" title="JS代码网"><img src="http://www.js-css.cn/images/toplogo.png" border="0"/></a>	
+	</li>
+	<li style="width:800px;">
+	<div class="menupos">
+	<ul style="list-style:none;">
+	<li class="firstli"><a href="http://www.js-css.cn" class="lia">首页</a></li>
+	<li class="sencli"><a href="http://www.js-css.cn/a/jscode/" class="lia">JS代码大全</a></li>
+	<li class="threeli"><a href="http://www.js-css.cn/a/openframe/jqueryapi/" class="lia">jQuery插件</a></li>
+	<li class="threeli"><a href="http://www.js-css.cn/a/css/" class="lia">DIV+CSS</a></li>
+	<li class="threeli"><a href="http://www.js-css.cn/a/html5/" class="lia">HTML5+CSS3</a></li>
+	<li class="threeli"><a href="http://www.js-css.cn/a/openframe/" class="lia">开源项目</a></li>
+	<li class="threeli"><a href="http://www.js-css.cn/a/tools/" class="lia">资源工具</a></li>	
+	</ul>
+	</div>
+	</li>     
+    </ul>
+  </div>
+  <div class="textpos">整理：<a href="http://www.js-css.cn" class="texta">JS代码网</a><br>来源：<a href="#" class="texta">互联网</a> <br>本站QQ交流学习群：<a href="#" class="texta">281362453</a> <br> 赞助网店：<a href="http://wuhaodian.taobao.com" class="texta">http://wuhaodian.taobao.com</a></div>
+</div>
+<!--JS代码网头部-->
+  <div class="container">
+    
+      <h1>jQuery图片延迟加载预加载插件Lazy Load</h1>
+      <div id="container">
+        <img class="lazy img-responsive" src="img/grey.gif" data-original="img/bmw_m1_hood.jpg" width="665" height="474" alt="BMW M1 Hood"><br/>
+        <img class="lazy img-responsive" data-original="img/bmw_m1_side.jpg" width="665" height="474" alt="BMW M1 Side"><br/>
+        <img class="lazy img-responsive" data-original="img/viper_1.jpg" width="665" height="474" alt="Viper 1"><br/>
+        <img class="lazy img-responsive" data-original="img/viper_corner.jpg" width="665" height="474" alt="Viper Corner"><br/>
+        <img class="lazy img-responsive" data-original="img/bmw_m3_gt.jpg" width="665" height="474" alt="BMW M3 GT"><br/>
+        <img class="lazy img-responsive" data-original="img/corvette_pitstop.jpg" width="665" height="474" alt="Corvette Pitstop"><br/>
+      </div>
+    </div>
+  <script src="http://www.js-css.cn/jscode/jquery.min.js"></script>
+  <script src="js/jquery.lazyload.js?v=1.9.0"></script>
+  <script type="text/javascript" charset="utf-8">
+  $(function() {
+     $("img.lazy").lazyload({
+         effect : "fadeIn"
+     });
+  });
+  </script>
+</body>
+</html>

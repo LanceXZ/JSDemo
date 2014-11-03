@@ -1,0 +1,1923 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="ie6" lang="zh">
+<![endif]-->
+<!--[if IE 7]>
+<html class="ie7" lang="zh">
+<![endif]-->
+<!--[if gt IE 7]>
+  <!-->
+<html lang="zh">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>
+    精致程序版本迭代时间轴特效代码 - JS代码网
+</title>
+<style type="text/css">
+    html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p, blockquote, pre, form, input, textarea, fieldset, table, th, td {
+        margin: 0;
+        padding: 0
+    }
+
+    body, button, input, select, textarea, h1, h2, h3, i {
+        font: normal 12px/1em 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1', arial, helvetica, sans-serif
+    }
+
+    body {
+        min-width: 960px
+    }
+
+    ul, li {
+        list-style: none
+    }
+
+    a {
+        text-decoration: none
+    }
+
+    .cls {
+        zoom: 1
+    }
+
+    .cls:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden
+    }
+
+    .link:hover {
+        text-decoration: underline
+    }
+
+    hr {
+        height: 0;
+        border-left: none;
+        border-right: 0;
+        border-top: 1px dashed #2d2f34;
+        border-bottom: 1px dashed #474954
+    }
+
+    .wrapper {
+        width: 960px;
+        margin: 0 auto
+    }
+
+    .header {
+        border-bottom: 10px solid #0b84e9;
+        box-shadow: 0 1px 1px #2fa0ff;
+        background: #42bbc7;
+        background: url(http://p2.qhimg.com/t01508a114ce3a4469f.png) no-repeat bottom center
+    }
+
+    .header .top {
+        height: 60px;
+        background: #fff
+    }
+
+    .header
+    .top h1 {
+        float: left;
+        padding: 6px 0 0 14px
+    }
+
+    .header .top h1 a {
+        display: block;
+        width: 153px;
+        height: 0;
+        padding-top: 48px;
+        overflow: hidden;
+        background: url(http://p7.qhimg.com/d/inn/05a63fc5/logo.png) no-repeat
+    }
+
+    .header .top .nav {
+        float: right;
+        position: relative;
+        margin-top: 16px
+    }
+
+    .header
+    .top .nav li {
+        padding: 8px 6px;
+        margin: 0 10px;
+        display: inline-block
+    }
+
+    .header
+    .top .nav li a {
+        color: #999
+    }
+
+    .header .top .nav li.current {
+        border-bottom: 1px solid #63d029
+    }
+
+    .header .top .nav li.current a {
+        color: #63d029
+    }
+
+    .header .top
+    .nav li.last {
+        margin-right: 0;
+        padding-right: 0
+    }
+
+    .header .top .nav li.last:hover {
+        text-decoration: underline
+    }
+
+    .header
+    .top .nav li.underscore {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        margin: 0;
+        padding: 0
+    }
+
+    .header
+    .top .nav li.underscore i {
+        position: absolute;
+        display: none;
+        height: 1px;
+        bottom: 0;
+        background: #63d029;
+        -webkit-transition: .5s;
+        -moz-transition: .5s;
+        -ms-transition: .5s;
+        -o-transition: .5s;
+        transition: .5s
+    }
+
+    .content {
+        background: #3a3c48 url(http://p1.qhimg.com/d/inn/05a63fc5/content-bg.png)
+    }
+
+    .footer {
+        height: 120px;
+        padding-top: 18px;
+        color: #adafba;
+        background: #2c2f38;
+        text-align: center
+    }
+
+    .footer
+    p {
+        line-height: 24px
+    }
+
+    .ie6 .header .top .nav li, .ie7 .header .top .nav li {
+        display: inline;
+        zoom: 1
+    }
+
+    .ie6
+    .header .top h1 a {
+        background-image: url(http://p0.qhimg.com/d/inn/05a63fc5/logo-8.png);
+        font-size: 0
+    }
+
+    .ie6
+    .header .top .nav li.underscore i {
+        overflow: hidden
+    }
+</style>
+<style type="text/css">
+.header {
+    height: 158px;
+    background: #2d8ee7 url(http://p0.qhimg.com/d/inn/05a63fc5/header-bg2.png) no-repeat bottom center
+}
+
+.content {
+    padding: 50px 0;
+    min-height: 720px
+}
+
+.content
+.wrapper {
+    position: relative;
+    background: url(http://p2.qhimg.com/d/inn/05a63fc5/release-bg.png) no-repeat right top
+}
+
+.content .light {
+    position: absolute;
+    left: 55px;
+    top: -50px;
+    width: 152px;
+    height: 191px;
+    background: url(http://p2.qhimg.com/t011df7512152150bb9.png) no-repeat top center
+}
+
+.content .light i {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: url(http://p4.qhimg.com/t01cfdd74c38452f86c.png) no-repeat top center
+}
+
+.content .line-left {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 70px
+}
+
+.content
+.line-right {
+    position: absolute;
+    right: 0;
+    top: 15px;
+    width: 460px
+}
+
+.content .main {
+    background: url(http://p0.qhimg.com/d/inn/05a63fc5/line-bg.png) repeat-y 249px 0
+}
+
+.content .main .title {
+    position: absolute;
+    line-height: 40px;
+    padding-left: 67px;
+    left: 230px;
+    top: 0;
+    color: #58a6fb;
+    font-size: 24px;
+    background: url(http://p7.qhimg.com/d/inn/05a63fc5/clock.png) no-repeat left top
+}
+
+.content .main .year {
+    position: relative;
+    z-index: 100
+}
+
+.content
+.main .year h2 {
+    height: 40px;
+    width: 170px;
+    padding-right: 30px;
+    font-size: 24px;
+    line-height: 40px;
+    text-align: right
+}
+
+.content
+.main .year h2 a {
+    color: #58a6fb
+}
+
+.content .main .year h2 i {
+    display: block;
+    position: relative;
+    height: 0;
+    width: 0;
+    left: 190px;
+    top: -20px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: #59a7fb transparent transparent transparent;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+    -webkit-transform-origin: 6px 3px;
+    -moz-transform-origin: 6px 3px;
+    -ms-transform-origin: 6px 3px;
+    -o-transform-origin: 6px 3px;
+    transform-origin: 6px 3px
+}
+
+.content .main .year .list {
+    margin: 10px 0;
+    position: relative;
+    overflow: hidden;
+    -webkit-transition: height 1s cubic-bezier(0.025, 0.025, 0.000, 1.115), opacity 1s;
+    -moz-transition: height 1s cubic-bezier(0.025, 0.025, 0.000, 1.115), opacity 1s;
+    -ms-transition: height 1s cubic-bezier(0.025, 0.025, 0.000, 1.115), opacity 1s;
+    -o-transition: height 1s cubic-bezier(0.025, 0.025, 0.000, 1.115), opacity 1s;
+    transition: height 1s cubic-bezier(0.025, 0.025, 0.000, 1.115), opacity 1s
+}
+
+.content .main .year .list
+ul {
+    bottom: 0
+}
+
+.content .main .year .list ul li {
+    background: url(http://p5.qhimg.com/d/inn/05a63fc5/circle.png) no-repeat 235px 31px;
+    padding: 30px 0;
+    color: #a1a4b8
+}
+
+.content .main .year
+.list ul li .date, .content .main .year .list ul li .version {
+    float: left;
+    display: block;
+    clear: left;
+    width: 200px;
+    line-height: 24px;
+    text-align: right
+}
+
+.content
+.main .year .list ul li .date {
+    font-size: 18px;
+    line-height: 32px;
+    color: #bec1d5
+}
+
+.content
+.main .year .list ul li .intro, .content .main .year .list ul li .more {
+    float: left;
+    display: block;
+    width: 400px;
+    margin-left: 100px;
+    line-height: 24px
+}
+
+.content
+.main .year .list ul li .intro {
+    font-size: 18px;
+    line-height: 32px;
+    color: #63d029
+}
+
+.content
+.main .year .list ul li.highlight {
+    background-image: url(http://p4.qhimg.com/d/inn/05a63fc5/circle-h.png)
+}
+
+.content
+.main .year .list ul li.highlight .date, .content .main .year .list ul li.highlight
+.intro {
+    color: #ec6a13
+}
+
+.content .wrapper:first-child .main .year.close h2
+i {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg)
+    transform:rotate(-90deg);
+}
+
+.content
+.wrapper:first-child .main .year.close .list {
+    opacity: 0;
+    height: 0 !important
+}
+
+.ie7
+.content .main .year h2 i {
+    left: 40px
+}
+
+.ie6 .content .wrapper {
+    background-image: url(http://p2.qhimg.com/d/inn/05a63fc5/release-bg-8.png)
+}
+
+.ie6
+.content .light {
+    display: none
+}
+
+.ie6 .content .line-left {
+    width: 100px
+}
+
+.ie6
+.content .main .year h2 {
+    padding-right: 0;
+    width: 200px
+}
+
+.ie6 .content .main
+.year h2 a {
+    cursor: default
+}
+
+.ie6 .content .main .year h2 i {
+    display: none
+}
+</style>
+</head>
+
+<body>
+<div class="content">
+<div class="wrapper">
+<div class="light">
+    <i>
+    </i>
+</div>
+<hr class="line-left">
+<hr class="line-right">
+<div class="main">
+<h1 class="title">
+    微一微信更新日志
+</h1>
+
+<div class="year">
+<h2>
+    <a href="#">
+        2014年
+        <i>
+        </i>
+    </a>
+</h2>
+
+<div class="list">
+<ul>
+<li class="cls ">
+    <p class="date">
+        07.07
+    </p>
+
+    <p class="intro">
+        高端大气上档次的微邀请上线啦
+    </p>
+
+    <p class="version">
+        V1.6
+    </p>
+
+    <div class="more">
+                        <span style="color:#E53333;">
+                          新增：
+                        </span>
+        <br/>
+        新增短信增值服务，之前短信提醒免费供商家使用，现在商家需要付费了哦。
+        <br/>
+        微邀请上线啦！高端大气上档次的电子微信邀请函为您省去了大量手写工作的烦恼，寄送更是轻松点击一键完成。微邀请主要用于会议、婚庆、活动等场合。
+        <br/>
+        现场签到上线啦！现场签到可用于会议、婚庆、上课学员签到等场合。
+        <br/>
+        微健身上线啦！微健身可展示多种健身课程，用户可根据自己的需要预约相应的课程，并可在个人中心管理自己的预约，查看自己的消费记录等。
+        <br/>
+        后台新增将个人微信和公众平台绑定和解绑的功能。绑定成功后可以使用个人微信随时随地去管理公众账号， 还可通过微信扫码登录微一微信后台。
+        <br/>
+        &nbsp;
+        <br/>
+                        <span style="color:#E53333;">
+                          优化：
+                        </span>
+        <br/>
+        优化微教育模块，课程模块中增加课时的添加，每一节课的上课地点以及老师都可以自己选择。
+        <br/>
+        优化用户注册、登录微一微信后台的流程。
+        <br/>
+        优化微官网模板去掉飘落物特效。
+        <br/>
+        优化微一微信后台导航菜单。
+        <br/>
+        优化粉丝同步规则，无昵称的粉丝不同步。
+        <br/>
+        &nbsp;
+        <br/>
+                        <span style="color:#E53333;">
+                          修复：
+                        </span>
+        <br/>
+        修复微官网某些模板用户来访统计不起作用的问题。
+        <br/>
+        修复粉丝不能全选的问题。
+        <br/>
+        修复新建立预约时开启支付，保存不成功的问题。
+        <br/>
+        修复微调研答题详情中用户姓名不显示的问题。
+        <br/>
+        修复微活动大转盘活动需要扣除积分的问题。
+        <br/>
+        修复微餐饮订单管理中订单详情姓名显示不正确的问题。
+        <br/>
+    </div>
+</li>
+<li class="cls ">
+    <p class="date">
+        06.30
+    </p>
+
+    <p class="intro">
+        微打印模块上线啦！
+    </p>
+
+    <p class="version">
+        V1.5
+    </p>
+
+    <div class="more">
+                        <span style="color:#E53333;">
+                          新增：
+                        </span>
+        <br/>
+        微打印模块上线，商户只需在微一微信后台进行相关设置，就可以使用照片打印机（必须要有相应的照片打印机硬件配合使用）。
+        <br/>
+        微预约增加后台录入预约订单的功能。原来的订单管理中只有用户自己提交的预约订单，现在对于打电话预约的用户，也可以增加到微一微信后台，有利于商家对所有预约订单统一管理。
+        <br/>
+        微预约增加支付功能，对于开放预约功能的商家，为了降低用户爽约率，而让用户支付一定的预约金额来增加预约用户到店率。是否需要用户支付预约金额，商家可根据自己的实际情况来定。
+        <br/>
+        微门店增加类型“球场”，针对球场类健身行业的商户，可将门店和预约绑定到一起，用户可通过查看门店详情，预约到相关门店。
+        <br/>
+        微门店增加区域管理、门店设置两个模块，主要有开启门店查询、区域重命名、绑定预约、区域的添加等功能。
+        <br/>
+        微会议参会人员列表中的增加报名时间项，可通过此项查看用户报名时间。
+        <br/>
+        新增渠道二维码报告。可统计通过此二维码关注的粉丝数量。便于商户在实际使用中统计销售人员的业绩。
+        <br/>
+        <br/>
+                        <span style="color:#E53333;">
+                          优化：
+                        </span>
+        <br/>
+        优化微调研中的相关提示，将调研完后“有奖调查”改为“你的建议”，“参与活动”改为“提交问卷”。
+        <br/>
+        优化后台按钮，操作文字等一些细节。
+        <br/>
+        优化API报告样式。
+        <br/>
+        优化微信端报错时的显示的语言种类，原来显示的都是英文，现在显示的是中文。
+        <br/>
+        <br/>
+                        <span style="color:#E53333;">
+                          修复：
+                        </span>
+        <br/>
+        修复大转盘活动不能通过微官网中的分类触发的问题。
+        <br/>
+        修复粉丝管理中粉丝重复的问题。
+        <br/>
+        修复微调研回复的图文中图片不显示的问题。
+        <br/>
+        修复微调研中结束跳转控制不起作用的问题。
+        <br/>
+        修复应用菜单到微信中偶尔失败后需等较长时间才能恢复的问题，现在当第一次应用菜单到微信中失败，重新应用即可。
+        <br/>
+        <br/>
+    </div>
+</li>
+<li class="cls ">
+    <p class="date">
+        06.23
+    </p>
+
+    <p class="intro">
+        LBS功能，轻松查找附近的门店
+    </p>
+
+    <p class="version">
+        V1.5
+    </p>
+
+    <div class="more">
+                        <span style="color:#E53333;">
+                          新增：
+                        </span>
+        <br/>
+        LBS功能上线啦，用户只要在商家公众账号中输入自己的位置，系统查询后自动给回复离用户比较近的几家店的信息，用户点击某家店后就可一键导航到商家位置。
+        <br/>
+        世界杯活动增加导出用户参与记录功能。
+        <br/>
+        微官网增加了微分享功能，用户可以将微官网首页分享到新浪微博、人人网、QQ空间等常见的社交圈。
+        <br/>
+        多图文和单图文增加批量删除功能。
+        <br/>
+        &nbsp;
+        <br/>
+                        <span style="color:#E53333;">
+                          优化：
+                        </span>
+        <br/>
+        优化从手机端访问微一微信。
+        <br/>
+        优化微活动大转盘中奖后的界面。
+        <br/>
+        优化微活动中用户领取优惠券后的界面。
+        <br/>
+        优化粉丝分组显示界面。
+        <br/>
+        优化注册流程。
+        <br/>
+        &nbsp;
+        <br/>
+                        <span style="color:#E53333;">
+                          修复：
+                        </span>
+        <br/>
+        修复微信墙生成的预览链接有错的问题。
+        <br/>
+        修复微会员中导入会员时不选择分组会导入失败的问题。
+        <br/>
+        修复微官网中三套模板点击二级分类没有进入该分类下的子列表页的问题。
+        <br/>
+        修复商城模板中菜单第一级分类不能点击的问题。
+        <br/>
+        修复在苹果手机端，刮刮卡不能显示倒计时的问题。
+        <br/>
+        修复世界杯竞猜活动季军赛奖品设置数量不能正确保存的问题。
+        <br/>
+        修复世界杯竞猜活动截止参与时间不起作用的问题。
+        <br/>
+        修复世界杯竞猜活动选择参与当天赛事预测，已结束的比赛能够参与竞猜，将要进行的比赛却不能参与竞猜的问题。
+        <br/>
+        修复微预约后台设置可上传两张图片时，前台时间用户不能正常选择的问题。
+        <br/>
+        <br/>
+    </div>
+</li>
+<li class="cls ">
+    <p class="date">
+        06.16
+    </p>
+
+    <p class="intro">
+        微一微信世界杯竞猜活动上线
+    </p>
+
+    <p class="version">
+        V1.5
+    </p>
+
+    <div class="more">
+                        <span style="color:#E53333;">
+                          新增：
+                        </span>
+        <br/>
+        世界杯竞猜活动模块。此模块主要功能是粉丝参与竞猜，如果猜中会得到商家提供的礼品或优惠券，通过这种方式达到推广商家知名度或销售额的目的。世界杯活动虽已经开幕，但是我们还有更多的比赛可以参与竞猜、商家赶紧调动粉丝的激情，一起来看世界杯吧！
+        <br/>
+        微活动新增大转盘抽奖活动，逐步丰富的微活动，满足商家多样化活动的需求！
+        <br/>
+        微会员增加消费、积分、微币兑换功能。消费可兑换成积分和微币，但是微币和积分不能兑换成消费，积分和微币之间是可以相互兑换的。也就是说，用户可以通过消费增加积分或微币，但是积分和微币目前不能在消费过程中直接抵现金用。
+        <br/>
+        <br/>
+                        <span style="color:#E53333;">
+                          优化：
+                        </span>
+        <br/>
+        优化微会议“点餐”名称更改为“茶点选择”，因为会议过程中一般是提供饮品或点心，之前使用点餐表达不够精确。
+        <br/>
+        <br/>
+                        <span style="color:#E53333;">
+                          修复：
+                        </span>
+        <br/>
+        修复微房产前台楼盘户型显示错位的问题。
+        <br/>
+        修复微教育中科目不能修改的问题。
+        <br/>
+        修复微教育中科目删除无提示问题。
+        <br/>
+        修复微活动中刮刮卡、优惠券设置了会员的访问规则之后，非会员用户仍能够直接参加活动的问题。
+        <br/>
+        修复微活动中现场抽奖时密码还没输入，就可以选择奖项，开始抽奖的问题。
+        <br/>
+        修复微活动现场抽奖时用户头像有时不显示的问题。
+        <br/>
+        修复微官网中添加快捷菜单时标题文字错误的问题。
+        <br/>
+        修复微官网二级分类设置隐藏之后，仍在微信手机端显示的问题。
+    </div>
+</li>
+<li class="cls ">
+    <p class="date">
+        06.09
+    </p>
+
+    <p class="intro">
+        微商城增加一套模板
+    </p>
+
+    <p class="version">
+        V1.5
+    </p>
+
+    <div class="more">
+                        <span style="color:#E53333;">
+                          新增：
+                        </span>
+        <br/>
+        微商城增加一套模板。这套模板类似于微餐饮的模板，可无限制添加分类并且便于展示。
+        <br/>
+        微预约新增上传图片的功能，用户在预约商家时，可以上传自己的头像或者会员卡信息等图片。满足更多商家的个性需求。
+        <br/>
+        微官网调整服务到期的公众账号的微官网在微信端将不能再被访问，并且提示微官网到期的信息。
+        <br/>
+        微会议增加导入参会人员的功能。
+        <br/>
+        粉丝管理中新增粉丝分组的功能，后续应用场景，可针对不同组的用户群发消息；并且在公众平台的粉丝分组可以直接同步到微一微信平台，微一微信平台的粉丝分组也可同步到微信公众平台中。
+        <br/>
+        <br/>
+                        <span style="color:#E53333;">
+                          优化：
+                        </span>
+        <br/>
+        优化微会员导入时可直接添加卡号，勿需绑定成功后还需要领卡的操作。
+        <br/>
+        优化微活动现场抽奖展示效果。
+        <br/>
+        <br/>
+                        <span style="color:#E53333;">
+                          修复：
+                        </span>
+        <br/>
+        修复微预约订单详情输入字数限制的问题。
+        <br/>
+        修复微官网模板管理中某些情况图文详细页模板风格设置失败的问题。
+        <br/>
+        修复在微官网分类中触发微调研不成功的问题。
+        <br/>
+        修复摇一摇奖池人数不正确的问题。
+        <br/>
+        修复微会员后台用户管理、领卡记录和兑奖设置页面因某些项为空时显示不正常的问题。
+        <br/>
+        <br/>
+    </div>
+</li>
+<li class="cls ">
+    <p class="date">
+        06.03
+    </p>
+
+    <p class="intro">
+        微会员：线下与线上会员完美接洽
+    </p>
+
+    <p class="version">
+        V1.5
+    </p>
+
+    <div class="more">
+        <div>
+            <div style="color:#993300;font-weight:normal;">
+                新增：
+            </div>
+            <div>
+                微会员增加导入线下会员的功能。绑定可以按绑定码或手机号进行绑定。绑定码可以任意设置，例如可以设置为姓名+身份证号，或者姓名+手机号等；绑定输入框提示信息可自定义，例如：可以写成“请输入姓名+手机号进行绑定”。
+            </div>
+            <div>
+                代理商管理平台新增代理商支付功能。
+            </div>
+            <div>
+                微预约预约订单中加“微信留言”功能。48小时内用户跟公众号有过沟通，就可以给用户发微信消息。
+            </div>
+            <div>
+            </div>
+            <div style="color:#993300;">
+                优化：
+            </div>
+            <div>
+                优化微会员中会员中心微信端主页固定显示“我的预约、积分查询、会员卡”三项。其它项会根据实际使用而显示，例如当你领了优惠券才会显示“我的优惠券”这项。需要根据实际需要显示的项有：我的优惠券，我的订单、我的课程、抽奖记录、收货地址、会员特权等。
+            </div>
+            <div>
+                优化微教育子科目简介显示，课程简介增加富文本编辑框。
+            </div>
+            <div>
+                优化微教育简介不限制字数。
+            </div>
+            <div>
+                优化微活动，微留言列表排序，新增加的活动或留言会显示在列表的最上方。
+            </div>
+            <div>
+                优化微预约下拉框样式。
+            </div>
+            <div>
+                优化微预约订单字段自定义功能，新增加三个类型日期、日期时间、日期时间段。
+            </div>
+            <div>
+                优化多客服页面默认指向新手引导页面；
+            </div>
+            <div>
+                优化微房产户型展示。后台房产户型添加“卫”,几室几厅几卫最大值为10，前台展示几室几厅几卫。
+            </div>
+            <div>
+                优化微官网导航时由原来的“标题内容”修改成"地址内容"
+            </div>
+            <div>
+                优化微会议现场报名成功后的提示信息可被自定义。
+            </div>
+            <div>
+                优化微商城中加宽订单金额可以被修改的条件，只要没有支付成功，就可以修改金额。
+            </div>
+            <div>
+                微门店中门店类型，一旦添加成功后不能修改。
+            </div>
+            <div style="color:#993300;">
+            </div>
+            <div style="color:#993300;">
+                修复：
+            </div>
+            <div>
+                修复微教育中在根分类下同样的科目名称能重复添加的问题。
+            </div>
+            <div>
+                修复添加公众账号（自动配置）中，提示文字有错字的问题。
+            </div>
+            <div>
+                修复微预约修改电话输入框弹出日期控件的问题。
+            </div>
+            <div>
+                修复微活动中活动被删除后仍然显示的问题。
+            </div>
+            <div>
+                修复智能分流不起作用的问题。
+            </div>
+            <div>
+                修复前台楼盘户型头部图片拉伸问题。
+            </div>
+            <div>
+                修复微信墙背景音乐没有循环播放问题。
+            </div>
+        </div>
+    </div>
+</li>
+<li class="cls ">
+    <p class="date">
+        05.26
+    </p>
+
+    <p class="intro">
+        微信约课开始啦！
+    </p>
+
+    <p class="version">
+        V1.4
+    </p>
+
+    <div class="more">
+                        <span style="color:#E53333;">
+                          新增：
+                        </span>
+        <br/>
+        <strong>
+            微教育上线啦！
+        </strong>
+        微教育适用于教育培训机构，教育机构支持按老师和课程查询，可对搜索出来的课程进行预约，并且微一微信后台可以对预约订单进行管理，真正打开微信约课之门！
+        <br/>
+        <strong>
+            微调研上线啦！
+        </strong>
+        微调研适用于在微信粉丝中做调查问卷。商家可以通过填写调查问卷奖励优惠券的方式，鼓励粉丝积极参与。微一微信后台可查询每一位粉丝所答问卷的详情，也可统计出问题中哪个答案被选频率最高。
+        <br/>
+        <strong>
+            微一微信多客服上线啦！
+        </strong>
+        您还在为客户多，而只有一位客服而烦恼吗？不用担心,微一微信团队一直想你所想,急你所急，已经推出“多客服”功能。多客服支持发送表情、截图，发送语音文件、录制语音消息，功能强大，管理轻松，让您不会再漏掉任何一位潜在客户。
+        <br/>
+        微官网增加微教育和微调研增加事件类型，用户可以在微官网分类管理中找到通往这些模块的入口，也可以通过快捷底部导航菜单进入相应的模块。
+        <br/>
+        <strong>
+            微官网所有图文列表页支持单独选择幻灯片啦！
+        </strong>
+        之前是首页模板和图文列表页模板都使用同样的幻灯片。但在实际应用中，商家需要不同分类的图文列表页展示不同的幻灯片，于是针对这个需求，我们做了调整。在首页幻灯片处添加幻灯片时，可以选择此幻灯片所属的分类，那么在微官网点击你所选的分类，就可以看到你刚才添加的幻灯片了，前提是你这个分类选择的列表页模板一定要支持幻灯片显示的哦！
+        <br/>
+        <br/>
+                        <span style="color:#E53333;">
+                          优化：
+                        </span>
+        <br/>
+        优化微房产楼盘简介显示。
+        <br/>
+        <br/>
+                        <span style="color:#E53333;">
+                          修复：
+                        </span>
+        <br/>
+        修复从微信同步过来的多图文，触发后无法显示子图文的问题。
+        <br/>
+        修复门店设置类型里有两个“旅游”的问题。
+        <br/>
+        <br/>
+    </div>
+</li>
+<li class="cls ">
+    <p class="date">
+        05.19
+    </p>
+
+    <p class="intro">
+        微官网百套模板上线啦！
+    </p>
+
+    <p class="version">
+        V1.4
+    </p>
+
+    <div class="more">
+                        <span style="color:#E53333;">
+                          新增：
+                        </span>
+        <br/>
+        微官网首页模板增加至100多套，图文列表页新增3套模板，可满足不同商家打造炫丽微官网的需求。
+        <br/>
+        微官网图文详细页增加快捷菜单可选；增加作者、时间可选；增加封面显示可选；满足商家个性需求。
+        <br/>
+        微官网增加版权链接地址，商户可以自行设置链接，跳转到商户想要跳转的界面。
+        <br/>
+        微官网实用工具增加最流行的2048小游戏，让用户更加依赖您的服务。
+        <br/>
+        微活动可以只针对上微信墙的用户进行现场抽奖，只要奖品够吸引人，所有用户都会疯狂戳起手机，让现场气氛更加火爆。
+        <br/>
+        微预约新增图文消息简介，订单说明新增富文本编辑框。
+        <br/>
+        <br/>
+                        <span style="color:#E53333;">
+                          修改：
+                        </span>
+        <br/>
+        修复微房产前台楼盘简介图片显示不正常的问题
+        <br/>
+        修复微留言模板版权不能修改的问题
+        <br/>
+        修复微活动删除之后关键词仍可触发的问题
+        <br/>
+        修复微会议报名时邮件输入框不易选中的问题
+    </div>
+</li>
+<li class="cls ">
+    <p class="date">
+        05.12
+    </p>
+
+    <p class="intro">
+        微信端可以开餐馆啦！
+    </p>
+
+    <p class="version">
+        V1.4
+    </p>
+
+    <div class="more">
+                        <span style="color:#E53333;">
+                          新增：
+                        </span>
+        <br/>
+        微餐饮增加在线订餐功能，打造专属您的微信客户。用户可通过微信端实现订餐、支付、管理自己订单的操作。商家只要有好的活动、优惠和良好的服务支持，商家就会吸引更多的粉丝，并且让这些粉丝就会成为您永远的拥护者。
+        <br/>
+        微餐饮后台增加订单管理，真正实现了在微信端开餐馆的愿望。
+        <br/>
+        商城新增一套通用模板，此套模板的首页仅展示的商品分类，未涉及到价格。这种做法带来的好处就是商家可以利用微官网的百套模板作为商城的首页来展示商品，点击单项分类可以直接跳转到商城的分类列表页。这种微官网模板和微商城的结合，可以给商户打造一个高端、大气、上档次的微商城。
+        <br/>
+        微信收货地址同步，会员可以把自己微信中的收货地址同步到商城收货地址中管理，购物更加便捷。
+        <br/>
+        新增微会议在线报名的功能，用户可在微信端查看会议信息并且直接报名，还可以点击地图一键导航直接到目的地。这种报名方式大大减轻了举办方需提前录入信息的工作量，让会议举办起来更轻松，参会人员更加容易统计和管理。
+        <br/>
+        新增几套定制了会议邀请函。
+        <br/>
+        官网模板二级页面新增11套模板。高品质的模板可以满足各行业商家需求；其次图文列表模板支持无限级分类，并且每一个分类都可以选择模板，商家可以打造更加炫酷的微官网。
+        <br/>
+        微官网首页模板增加标签功能，用户可以按行业、热度、风格搜索模板。想查看那哪套模板最受欢迎吗？请点击热门推荐。
+        <br/>
+        微官网增加引导图，引导图支持上传5张图片，商家可以利用引导图帮助用户使用，也可以宣传自己的产品或活动宣传等推广活动。引导图目前和一些模板兼容性不太好，请商家自行斟酌使用。
+        <br/>
+        预约后台新增URL链接跳转功能，当用户预约完成后，就可以自动跳转到商家设置的页面。
+        <br/>
+        房产新增一键导航功能，用户只要开启定位功能，就能快速定位到达商户那里的路线。房产项目简介和交通配套可以重命名，并且可以将名称置空，则不显示这两个名称，满足不同客户的定制需求。
+        <br/>
+        微信端会员中心新增优惠券信息。用户可以随时查看自己领取的优惠券。
+        <br/>
+        微相册支持多图片上传，以前上传照片只能一张张上传，费时费力，现在实现一次上传多张的功能，满足了需要相册展示产品的商户。
+        <br/>
+        <br/>
+                        <span style="color:#E53333;">
+                          优化：
+                        </span>
+        <br/>
+        优化商城订单管理中订单查询条件。
+        <br/>
+        优化微信端商城分页的页码显示数量。
+        <br/>
+        优化360度全景。
+        <br/>
+        <br/>
+                        <span style="color:#E53333;">
+                          修复：
+                        </span>
+        <br/>
+        修复微官网引导页不能正常显示的问题。
+        <br/>
+        修复选择菜进购物车后“丢菜”的问题。
+        <br/>
+        修复现场抽奖中奖人名单头像不显示的问题。
+        <br/>
+        修复扫描预览生成链接不全的问题。
+    </div>
+</li>
+<li class="cls ">
+    <p class="date">
+        04.28
+    </p>
+
+    <p class="intro">
+        商城支付宝支付功能上线
+    </p>
+
+    <p class="version">
+        V1.3
+    </p>
+
+    <div class="more">
+                        <span style="color:#E53333;">
+                          新增：
+                        </span>
+        <br/>
+        代理商管理平台上线啦！微一微信代理商公众平台拥有管理公众账号，管理代理商等核心功能，使客户关系一目了然；此外还有详细的资金转入转出的记录，让商户轻松管理账户资金。
+        <br/>
+        商城支付宝支付功能上线啦！对于电商至关重要的支付环节、此前因为微信支付只针对微信认证服务号，让许多商家望而止步，现在所有订阅号的商户都可以通过支付宝来完成支付环节，让商户不再丢失任何一位顾客。
+        <br/>
+        微官网模板支持上传多张背景图啦，多张背景图可以实现自动切换的功能。商户可以制作出更加绚丽的微官网了，想变就变，从此不再是难事！如果用户不想让背景图片变换，只需将背景图片设置为一张即可。
+        <br/>
+        微官网分类管理和快捷菜单中加入微留言等事件。用户可以在微官网分类管理中找到通往这些模块的入口，也可以通过快捷底部导航菜单进入相应的模块。
+        <br/>
+        商城后台订单管理中的手动设置订单为支付成功。这个功能可以实现用户线下汇款成功后，手动修改订单的状态，方便商户管理用户订单。
+        <br/>
+        定义菜单中增加“取消应用到微信”的功能，商户可以随意取消或应用导航菜单的功能。
+        <br/>
+        <br/>
+                        <span style="color:#E53333;">
+                          优化：
+                        </span>
+        <br/>
+        左侧导航菜单自动滚动定位，更加方便用户操作
+        <br/>
+        优化手机端提示信息页
+        <br/>
+        <br/>
+        <br/>
+                        <span style="color:#E53333;">
+                          解决：
+                        </span>
+        <br/>
+        修复了素材管理中，多图文编辑时URL地址无法显示的问题
+        <br/>
+        修复了会员中心中的订单详情中不能显示已支付的支付方式名称的问题
+        <br/>
+        修复了成功售出商品后库存不自动减少的问题
+        <br/>
+        修复了微留言审核不起作用的问题
+        <br/>
+        修复了留言管理中删除不起作用的问题
+        <br/>
+        修复了没有真正预约到分店的问题
+        <br/>
+        修复了全景预览时显示不正常的问题
+        <br/>
+        修复了打开图文消息“跳两次”的问题
+        <br/>
+    </div>
+</li>
+<li class="cls ">
+    <p class="date">
+        04.21
+    </p>
+
+    <p class="intro">
+        微留言上线了
+    </p>
+
+    <p class="version">
+        V1.3
+    </p>
+
+    <div class="more">
+                        <span style="color:#E53333;">
+                          新增：
+                        </span>
+        <br/>
+        微留言上线了！可以创建多个留言板，用于不同的用途。产品和服务做的好的商家都需要这个平台。商家只要做好产品和用户服务，那用户好的评论就会给商家的品牌带来正能量。如果用户的评论不利于商家时，也可以将此用户拉黑（此用户的评论将不再显示）。
+        <br/>
+        手机摇一摇活动上线了！有趣的摇一摇抽奖活动，引爆现场必备神器，增加现场活动的气氛。
+        <br/>
+        微会议可现场报名啦！这样保证了所有参会的人员的信息都可以被记录，并且可以参与抽奖活动。
+        <br/>
+        门店以前只支持餐饮行业，现在门店支持所有行业（旅游，酒店，教育，医疗等），并且门店支持单独管理。门店链接地址可以被复制，这样可以保
+        <br/>
+        证各分店信息只能自己看到；链接地址可以被重置，可以提高账号安全性。
+        <br/>
+        门店和预约完美结合，我们可以在门店里单独管理预约订单，修改门店信息。有了门店和预约的结合，我们便打通了所有行业的预约功能。
+        <br/>
+        商城前台增加搜索功能，便于用户精确定位自己需要的商品！
+        <br/>
+        <br/>
+                        <span style="color:#E53333;">
+                          优化：
+                        </span>
+        <br/>
+        优化手机端抽奖页面，文字会适应屏幕而增大，例如抽奖页面活动结束的字非常的小，必须手动放大屏幕才能看见。
+        <br/>
+        优化微活动中奖人领奖过程，修复领奖人回复信息后就标示为已领奖的问题。
+        <br/>
+
+        <div>
+            <br/>
+        </div>
+        <br/>
+    </div>
+</li>
+<li class="cls ">
+    <p class="date">
+        04.14
+    </p>
+
+    <p class="intro">
+        微官网新增9套模板
+    </p>
+
+    <p class="version">
+        v1.3 build 1013
+    </p>
+
+    <div class="more">
+        <p>
+            <br/>
+        </p>
+
+        <div style="color:#993300;">
+                          <span style="color:#E53333;">
+                            新增
+                          </span>
+        </div>
+        <p>
+            微官网新增9套模板
+        </p>
+
+        <p>
+            <strong>
+                公众账号支持删除功能，一旦删除公众账号后，之前所有设置的信息都将消失。请慎用！
+            </strong>
+        </p>
+
+        <div>
+            微会员增加微币开关，商户可以设定是否启用微币规则
+        </div>
+        <div>
+            增加了扫描二维码的规则，商户可以设置扫描二维码赠送积分、微币等活动
+        </div>
+        <div>
+            商城商品增加批量操作功能，可以批量支持或取消会员卡、优惠券等。并记录操作日志，方便查阅。
+        </div>
+        <div>
+            微官网中增加微会员的事件，商户可以在分类管理中选择触发会员的相关事件，以便在前台查看。
+        </div>
+        <div style="color:#993300;">
+        </div>
+        <div style="color:#993300;">
+                          <span style="color:#E53333;">
+                            优化
+                          </span>
+        </div>
+        <div>
+            微信墙信息轮播速度
+        </div>
+        <div>
+            会员订单底部导航留白问题
+        </div>
+        <div>
+            表格内文字过长时不强制换行的问题
+        </div>
+        <div>
+            商城的商品搜索功能
+        </div>
+        <div>
+            网站上其他的一些小细节
+        </div>
+        <div>
+        </div>
+        <div style="color:#993300;">
+                          <span style="color:#E53333;">
+                            修改
+                          </span>
+        </div>
+        <div>
+            预约前台每日订单总量控制提交无效的问题
+        </div>
+        <div>
+            预约前台订单修改不能提交的问题
+        </div>
+        <div>
+            微房产中户型图显示，前一页多了一个空白页的问题
+        </div>
+        <p>
+            <br/>
+        </p>
+    </div>
+</li>
+<li class="cls ">
+    <p class="date">
+        04.07
+    </p>
+
+    <p class="intro">
+        微会员上线
+    </p>
+
+    <p class="version">
+        v1.3 build 953
+    </p>
+
+    <div class="more">
+                        <span style="color:#E53333;">
+                          新增：
+                        </span>
+        <br/>
+        微会员栏目，商户可以根据需求设置会员卡，会员等级，会员积分规则，会员优惠等信息
+        <br/>
+        商城的商品中添加了支持优惠券的使用，用户可以在购买商品的时享受凭券打折或者满100减10元的优惠
+        <br/>
+        图文中增加积分规则，用户可根据自己的需要设置某篇文章需要消耗一定的积分才能查看
+        <br/>
+        奖品是虚拟奖品时添加奖品使用的方式，例如：奖品为优惠券时，可设置优惠券的使用方式为满100减10元
+        <br/>
+        商城中商品详情中允许添加图片，商户可以根据自己需求编辑商品介绍，然后转化为图片，上传到商品介绍中
+        <br/>
+        微信墙可展示多个墙，新增滚动速度和滚动间隔时间
+        <br/>
+        <br/>
+                        <span style="color:#E53333;">
+                          优化：
+                        </span>
+        <br/>
+        微信墙最新消息显示的问题
+        <br/>
+        微信墙qq表情图片被放大问题
+        <br/>
+        优惠方式展示的样式
+        <br/>
+        微信支付通知发货页面调整
+        <br/>
+        微活动添加奖品页样式
+        <br/>
+        <br/>
+                        <span style="color:#E53333;">
+                          修复：
+                        </span>
+        <br/>
+        预约订单内容设置无法添加字段的问题
+        <br/>
+        预约有时不发邮件通知商户的问题
+        <br/>
+        预约编辑限制每日数量的内容不显示的问题
+        <br/>
+        预约每日限制和总量限制不起作用的问题
+        <br/>
+        预约中前台预订没有提示的问题
+        <br/>
+        商城中添加商品时，商品原价无法保存的问题
+        <br/>
+        订单页面显示的时间问题
+        <br/>
+        菜单统计线上统计数据为0的问题
+        <br/>
+    </div>
+</li>
+<li class="cls ">
+    <p class="date">
+        03.31
+    </p>
+
+    <p class="intro">
+        新增微官网快捷菜单模板
+    </p>
+
+    <p class="version">
+        v1.2 build 901
+    </p>
+
+    <div class="more">
+        <div id="mail_content_4294967308" class="mail_content mail_content_4294967308">
+            <div id="mail_content_iframe_4294967308" class="mail_content_div_container">
+                <div id="iframe_4294967308" class="iframe_content">
+                    <p>
+                        <br/>
+                    </p>
+
+                    <p>
+                        <br/>
+                    </p>
+
+                    <div id="mail_content_4294967308" class="mail_content mail_content_4294967308">
+                        <div id="mail_content_iframe_4294967308" class="mail_content_div_container">
+                            <div id="iframe_4294967308" class="iframe_content">
+                                <div class="FoxDIV_20140403110014595">
+                                    <div>
+                                        <p>
+                                          <span>
+                                            <span style="color:#E53333;">
+                                              新增
+                                            </span>
+                                            <span style="color:#E53333;">
+                                              ：
+                                            </span>
+                                          </span>
+                                            <br/>
+                                            微预约上线, 可短信通知和邮件通知，在用户预约信息提交时，会直接短信或邮件通知商家。
+                                            <br/>
+                                            新增8套微官网快捷菜单模板
+                                            <br/>
+                                            新增一套定制模板
+                                            <br/>
+                                            微官网模板管理增加预览功能和模板说明
+                                            <br/>
+                                            微活动领奖时增加一个字段,默认为姓名
+                                            <br/>
+                                            微活动抽奖增加中奖人、领取者、抽奖范围和抽奖密码信息；
+                                        </p>
+
+                                        <p>
+                                            粉丝同步资料中新增限制同步频率,默认为增量同步,大幅提高同步效率
+                                        </p>
+
+                                        <p>
+                                            <br/>
+                                        </p>
+                                        <span style="color:#E53333;">
+                                          优化：
+                                        </span>
+                                        <br/>
+                                        微活动抽奖中记录页面、前台抽奖页面优化
+                                        <br/>
+                                        微商城的订单管理
+                                        <br/>
+                                        菜品特价名称调整到大图预览区域
+                                        <br/>
+                                        微会议点餐页面,暂时屏蔽点餐触发的抽奖功能(以后可能让用户可设置)
+                                        <br/>
+                                        上传图片弹出框位置居中显示
+                                        <br/>
+                                        图片空间弹出框位置居中显示
+                                        <br/>
+                                        粉丝管理分页功能
+                                        <br/>
+                                        粉丝同步方法,点击同步后会在后台自动同步
+                                        <br/>
+                                        部分浏览器保存成功之后提示页面滚动条不能回顶
+                                        <br/>
+                                        部分浏览器改变浏览器窗口主页高度不能自动适应
+                                        <br/>
+                                        <br/>
+                                        <span style="color:#E53333;">
+                                          修复：
+                                        </span>
+                                        <br/>
+                                        后台点餐记录可能会读取到同一个人在另一个会议登记的信息
+                                        <br/>
+                                        自动回复文本有换行符会不显示的问题
+                                        <br/>
+                                        微活动-奖品管理中删除奖品后不能正常返回到奖品管理列表
+                                        <br/>
+                                        客服回复消息的时间排序问题
+                                        <br/>
+                                        由于微信方地址修改，导致帐号绑定和资料同步出错
+                                        <br/>
+                                        添加签到二维码时选择会议保存不成功
+                                        <br/>
+                                        相册预览中，二维码置底的问题
+                                        <br/>
+                                        鼠标移出账号信息，账号信息不再延迟显示，delay时间为0
+                                        <br/>
+                                        微官网添加背景音乐，以及修改后台简单样式显示问题
+                                        <p>
+                                            <br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        <br/>
+                    </p>
+
+                    <p>
+                        <br/>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <br/>
+    </div>
+</li>
+<li class="cls highlight">
+    <p class="date">
+        03.17
+    </p>
+
+    <p class="intro">
+        紧急更新，微信新增两个事件
+    </p>
+
+    <p class="version">
+        v1.2 build 719
+    </p>
+
+    <div class="more">
+        <p>
+            微信新增两个事件，导致消息管理中显示发生了一个未知事件
+        </p>
+
+        <p>
+            1. 点击菜单中的链接类型菜单
+        </p>
+
+        <p>
+            2. 公众平台群发消息完成的通知
+        </p>
+    </div>
+</li>
+<li class="cls ">
+    <p class="date">
+        03.11
+    </p>
+
+    <p class="intro">
+        微餐饮门店系统上线
+    </p>
+
+    <p class="version">
+        v1.2 build 587
+    </p>
+
+    <div class="more">
+        <div style="font-weight:bold;">
+            新增:
+        </div>
+        <div>
+            <div>
+                刮刮卡上线
+            </div>
+            <div>
+                微商城上线
+            </div>
+            <div>
+                微餐饮上线
+            </div>
+            <div>
+                门店系统上线
+            </div>
+            <div>
+                实用工具上线(提供27个实用工具)
+            </div>
+        </div>
+        <div>
+            <br/>
+        </div>
+        <div style="font-weight:bold;">
+            优化:
+        </div>
+        <div>
+            <div>
+                新增一种相册展示方式
+            </div>
+            <div>
+                增加sn码导出的功能
+            </div>
+            <div>
+                文本编辑器增加源码工具
+            </div>
+            <div>
+                更新图片空间中文路径增加二级目录年月的中文名称
+            </div>
+            <div>
+                微活动中奖后增加提交姓名
+            </div>
+        </div>
+        <div>
+        </div>
+        <div style="font-weight:bold;">
+            修复:
+        </div>
+        <div>
+            <div>
+                修复相同账号绑定时每次都添加一个账号的问题
+            </div>
+            <div>
+                修复菜单链接类型不能改为关键词的问题
+            </div>
+            <div>
+                修复消息管理关掉对话窗口仍然自动加载最新消息的问题
+            </div>
+            <div>
+                修复抽取实物奖品不能记录信息的问题
+            </div>
+        </div>
+    </div>
+</li>
+<li class="cls highlight">
+    <p class="date">
+        03.05
+    </p>
+
+    <p class="intro">
+        微活动微客服上线
+    </p>
+
+    <p class="version">
+        v1.2 build 521
+    </p>
+
+    <div class="more">
+        新增:
+        <br/>
+        微活动上线,暂只支持优惠券
+        <br/>
+        新增多关键词模糊匹配
+        <br/>
+        增加IE兼容性提示
+        <br/>
+        增加了客服接口, 认证服务号可与48小时之内发送过消息的用户进行对话
+        <br/>
+        优化:
+        <br/>
+        允许未激活帐号登陆
+        <br/>
+        优化了缓存,解决了删除关键词但对应数据仍然缓存的问题
+        <br/>
+        去掉页面标题后的 "-微一微信"
+        <br/>
+        相册目前只有一种展示样式, 暂时隐藏了其它展示方式
+        <br/>
+        图文增加URL地址,可直接跳转,同时保留了原文地址
+        <br/>
+        修复:
+        <br/>
+        微报告数据统计为空
+        <br/>
+        有时候关键词不触发(由于腾讯提供SDK错误导致)
+        <br/>
+        微相册手机上不显示
+        <br/>
+        模板21和模板29的问题,以及其它一些细节
+        <br/>
+        消息管理中更新资料提示openid无效
+        <br/>
+        多图文编辑分类不能保存
+        <br/>
+        消息列表中回复的图文显示错误
+        <br/>
+        关键词为数字时模糊匹配无效
+        <br/>
+    </div>
+</li>
+<li class="cls highlight">
+    <p class="date">
+        02.16
+    </p>
+
+    <p class="intro">
+        360度全景上线
+    </p>
+
+    <p class="version">
+        v1.1 build 352
+    </p>
+
+    <div class="more">
+        <p>
+            增加微相册和360度全景事件触发,
+        </p>
+
+        <p>
+            增加帐号状态自动检测功能
+        </p>
+
+        <p>
+            增加多关键词触发
+        </p>
+
+        <p>
+            增加创建营销二维码
+        </p>
+
+        <p>
+            手机预览界面上增加了二维码预览功能
+        </p>
+
+        <p>
+            修复摘要为空时不能使用微信预览的问题
+        </p>
+
+        <p>
+            <br/>
+        </p>
+    </div>
+</li>
+<li class="cls ">
+    <p class="date">
+        01.21
+    </p>
+
+    <p class="intro">
+        微一微信V1.0正式上线
+    </p>
+
+    <p class="version">
+        v1.0 build 255
+    </p>
+
+    <div class="more">
+        <p>
+            增加三种预览功能，浏览器内嵌手机预览，二维码预览，微信图文消息预览
+        </p>
+
+        <p>
+            图文素材增加列表和图文切换功能
+        </p>
+
+        <p>
+            新增微信认证订阅号的认证
+        </p>
+
+        <p>
+            优化自动配置和手动配置流程
+        </p>
+
+        <p>
+            优化由于公众号接口权限问题导致错误的提示信息
+        </p>
+
+        <p>
+            增加公众平台帐号绑定功能，便于手动配置用户后期绑定帐号
+        </p>
+
+        <p>
+            新增微信墙可自定义模板，提供两套模板
+        </p>
+
+        <p>
+            新增微报告，为API、粉丝、消息、菜单、官网等提供统计图和详细数据和一些纬度分析
+        </p>
+
+        <p>
+            优化图片上传功能，可选择选择已有网络图片也可上传
+        </p>
+
+        <p>
+            修复在PC上用Firefox预览微房产的某些页面不兼容的问题
+        </p>
+
+        <p>
+            修复其它一些细节
+        </p>
+
+        <p>
+            <br/>
+        </p>
+
+        <p>
+            <br/>
+        </p>
+    </div>
+</li>
+<li class="cls highlight">
+    <p class="date">
+        01.17
+    </p>
+
+    <p class="intro">
+        微会议上线并为星空年会提供服务
+    </p>
+
+    <p class="version">
+        V1.0 beta
+    </p>
+
+    <div class="more">
+        <p>
+            增加营销二维码管理
+        </p>
+
+        <p>
+            微会议功能上线，可进行参会人员管理，会议信息自动查询（如座位、住宿、会议日程、等），扫码签到和点餐，可自定义相关回复内容，参会人员预置五个扩展字段可配合签到来实现一些特殊功能，以及微信上墙互动等
+        </p>
+
+        <p>
+            微信墙增加现场抽奖功能
+        </p>
+
+        <p>
+            增加会议中点餐触发抽奖事件
+        </p>
+
+        <p>
+            增加微信墙不审核直接上墙功能
+        </p>
+
+        <p>
+            优化微房产的一些细节
+        </p>
+    </div>
+</li>
+</ul>
+</div>
+</div>
+<div class="year">
+    <h2>
+        <a href="#">
+            2013年
+            <i>
+            </i>
+        </a>
+    </h2>
+
+    <div class="list">
+        <ul>
+            <li class="cls ">
+                <p class="date">
+                    12.24
+                </p>
+
+                <p class="intro">
+                    微一微信V1.0bate正式上线
+                </p>
+
+                <p class="version">
+                    V1.0 beta
+                </p>
+
+                <div class="more">
+                    <p>
+                        修复微信墙现场抽奖成功但前台没反应的情况
+                    </p>
+
+                    <p>
+                        提供29套微官网模板
+                    </p>
+
+                    <p>
+                        修复登陆失效后登陆页面被包含在框架中的问题
+                    </p>
+
+                    <p>
+                        修复消息管理中搜索个别事件出错的问题
+                    </p>
+
+                    <p>
+                        修复找回密码URL失效问题
+                    </p>
+
+                    <p>
+                        增加微官网快捷菜单选择图标功能
+                    </p>
+
+                    <p>
+                        优化和修复其它一些细节和界面UI
+                    </p>
+
+                    <p>
+                        <br/>
+                    </p>
+
+                    <p>
+                        <br/>
+                    </p>
+                </div>
+            </li>
+            <li class="cls ">
+                <p class="date">
+                    12.10
+                </p>
+
+                <p class="intro">
+                    微房产上线
+                </p>
+
+                <p class="version">
+                    V1.0 beta
+                </p>
+
+                <div class="more">
+                    <p>
+                        优化通知邮件模板
+                    </p>
+
+                    <p>
+                        优化图文素材界面UI
+                    </p>
+
+                    <p>
+                        统一表单验证方法和UI
+                    </p>
+
+                    <p>
+                        统一系统弹框UI
+                    </p>
+
+                    <p>
+                        修改过缓存机制增加微房产微官网的相关关键词触发
+                    </p>
+                </div>
+            </li>
+            <li class="cls ">
+                <p class="date">
+                    11.26
+                </p>
+
+                <p class="intro">
+                    完善微信墙并为百会CRM年会提供微信上墙服务
+                </p>
+
+                <p class="version">
+                    V1.0 beta
+                </p>
+
+                <div class="more">
+                    <p>
+                        完善并优化微信墙功能
+                    </p>
+
+                    <p>
+                        增加关注自动同步粉丝资料
+                    </p>
+
+                    <p>
+                        增加粉丝“足迹”功能，可跟踪粉丝的每一个动作
+                    </p>
+
+                    <p>
+                        增加手动更新粉丝资料的功能，便于在自动更新失败或粉丝资料变化时手动更新
+                    </p>
+                </div>
+            </li>
+            <li class="cls ">
+                <p class="date">
+                    11.23
+                </p>
+
+                <p class="intro">
+                    微一微信V1.0bate上线试运行
+                </p>
+
+                <p class="version">
+                    V1.0 beta
+                </p>
+
+                <div class="more">
+                    提供公众号自动接入，自动应答，素材管理，菜单管理，粉丝管理，消息管理，微官网，微信墙等功能
+                    <br/>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+    <p>
+        2014 &copy; JS代码网
+    </p>
+</div>
+<script src="http://s8.qhimg.com/static/637d69428758a564/jquery/1.9.1/jquery.js">
+</script>
+<script type="text/javascript">
+    $(function () {
+//        var e = $(".nav"),
+//                t = e.offset().left;
+//        alert(e);
+//        $(window).on("resize",
+//                function () {
+//                    t = e.offset().left
+//                });
+//        var n = e.find("li.current"),
+//                r = {
+//                    width: n.innerWidth(),
+//                    left: n.offset().left - t
+//                },
+//                i = $(".nav .underscore i"),
+//                s;
+//        e.find("li:not(.underscore):not(.last)").mouseover(function () {
+//            var e = $(this);
+//            s = setTimeout(function () {
+//                        i.css({
+//                            width: e.innerWidth(),
+//                            left: e.offset().left - t
+//                        })
+//                    },
+//                    100)
+//        });
+//        var o = function () {
+//            clearTimeout(s),
+//                    i.css(r)
+//        };
+//        e.mouseleave(o).find("li.last").mouseover(o),
+//                i.css(r).show(),
+//                n.css("border-color", "#fff")
+    })
+</script>
+<script>
+    $(".main .year .list").each(function (e, t) {
+        var n = $(t),
+                r = n.find("ul");
+        n.height(r.outerHeight());
+        r.css("position", "absolute")
+    })
+    $(".main .year>h2>a").click(function (e) {
+        e.preventDefault();
+        $(this).parents(".year").toggleClass("close")
+    })
+</script>
+</body>
+
+</html>
