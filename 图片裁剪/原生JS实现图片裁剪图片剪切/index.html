@@ -1,0 +1,203 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>原生JS实现图片裁剪图片剪切特效 - JS代码网</title>
+    <meta name="keywords" content="JS代码,JS特效代码,jQuery特效,JS图片裁剪,JS图片剪切特效,JS裁剪图片"/>
+    <meta name="description" content="JS代码网提供jQuery插件、JS特效、JS图片裁剪插件的学习和下载"/>
+    <style type="text/css">
+        .img_a {
+            margin: 0px auto;
+            width: 550px;
+            height: 420px;
+            overflow: hidden;
+            _position: relative;
+        }
+
+        .img_a .img_b {
+            margin-right: 130px;
+            position: relative;
+            width: 420px;
+            height: 420px;
+            _position: absolute;
+            _top: 0px;
+            _left: 0px;
+        }
+
+        .img_a .img_c {
+            float: right;
+            position: relative;
+            width: 120px;
+            overflow: hidden;
+            height: 420px;
+            _position: absolute;
+            _top: 0px;
+            _left: 430px;
+        }
+
+        .img_a .img_d {
+            filter: alpha(opacity=60);
+            opacity: 0.6;
+            background-color: #000;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .img_a .img_b img {
+            max-height: 420px;
+            max-width: 420px;
+        }
+
+        .img_a #img_b1 {
+            top: 0px;
+            left: 0px;
+            height: 150px;
+            width: 420px;
+        }
+
+        .img_a #img_b2 {
+            left: 0px;
+            top: 150px;
+            width: 150px;
+            height: 120px;
+        }
+
+        .img_a #img_b4 {
+            right: 0px;
+            top: 150px;
+            width: 150px;
+            height: 120px;
+        }
+
+        .img_a #img_b5 {
+            bottom: 0px;
+            left: 0px;
+            height: 150px;
+            width: 420px;
+        }
+
+        .img_a #img_b3 {
+            width: 120px;
+            height: 120px;
+            top: 150px;
+            left: 150px;
+            cursor: move;
+            background: none;
+        }
+
+        .img_a #img_div {
+            width: 100%;
+            height: 100%;
+            background-color: #FFF;
+            filter: alpha(opacity=10);
+            opacity: 0.1;
+        }
+
+        .img_a .img_c_1, .img_a .img_c_2, .img_a .img_c_3 {
+            position: relative;
+            background-color: #F5F5F5;
+            overflow: hidden;
+        }
+
+        .img_a .img_c p {
+            margin: 0px;
+            padding: 0px;
+            padding-bottom: 10px;
+            line-height: 25px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .img_a .img_c img {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .img_a .img_c_1 {
+            width: 120px;
+            height: 120px;
+        }
+
+        .img_a .img_c_2 {
+            width: 50px;
+            height: 50px;
+        }
+
+        .img_a .img_c_3 {
+            width: 24px;
+            height: 24px;
+        }
+
+        .img_a #img_c1 {
+            height: 120px;
+            width: 120px;
+            background-color: #000;
+            top: 0px;
+            left: 0px;
+            filter: alpha(opacity=1);
+            opacity: 0.01;
+        }
+
+        .img_a #img_c2 {
+            width: 120px;
+            top: 120px;
+            height: 300px;
+        }
+
+        .img_a #img_c4 {
+            position: absolute;
+        }
+
+        .img_a #img_dsf {
+            cursor: nw-resize;
+            position: absolute;
+            left: 110px;
+            top: 110px;
+            width: 10px;
+            height: 10px;
+            background-color: #004000;
+            z-index: 5;
+        }
+    </style>
+</head>
+
+<body style="background-color:#111;">
+<div class="img_a">
+    <div class="img_c">
+        <div class="img_c_1">
+            <img src="p/1.jpg" id="img_1">
+        </div>
+        <p>宽度*高度=120*120</p>
+
+        <div class="img_c_2">
+            <img src="p/1.jpg" id="img_2">
+        </div>
+        <p>宽度*高度=50*50</p>
+
+        <div class="img_c_3">
+            <img src="p/1.jpg" id="img_3">
+        </div>
+        <p>宽度*高度=24*24</p>
+    </div>
+    <div class="img_b" id="img_b">
+        <div class="img_d" id="img_b1"></div>
+        <div class="img_d" id="img_b2"></div>
+        <div class="img_d" id="img_b3">
+            <div id="img_div"></div>
+            <div id="img_dsf"></div>
+        </div>
+        <div class="img_d" id="img_b4"></div>
+        <div class="img_d" id="img_b5"></div>
+        <img id="cropImg" src="p/1.jpg"  height="420"></div><!--onload="img_sf(this);"-->
+</div>
+</div>
+<!--<script src="js/crop.js"></script>-->
+<script src="js/jquery-1.8.3.js"></script>
+<script src="js/jq.crop.js"></script>
+<script>
+//    $('#cropImg').crop();
+</script>
+</body>
+</html>
+
