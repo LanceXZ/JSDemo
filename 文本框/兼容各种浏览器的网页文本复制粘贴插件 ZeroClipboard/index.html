@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>兼容各种浏览器的文本内容复制粘贴插件 ZeroClipboard Flash文本复制 - JS代码网</title>
+<meta name="Keywords" content="ZeroClipboard文本复制粘贴,Flash文本内容复制,文本复制无提示,兼容各种浏览器复制粘贴" />
+<meta name="description" content="ZeroClipboard Flash 文本复制是业内常用方法，是兼容各种浏览器的插件，值得使用它" />
+<!--JS代码网顶部CSS-->
+<link href="http://www.js-css.cn/jscode/jscode.css" rel="stylesheet" />
+<!--JS代码网顶部CSS-->
+
+<script type="text/javascript" src="ZeroClipboard.js"></script>
+<script language="JavaScript">
+  var clip = null;  
+  function $(id) { return document.getElementById(id); }  
+  function init() {  
+  	clip = new ZeroClipboard.Client();
+  	clip.setHandCursor(true);  	
+  	clip.addEventListener('mouseOver', function (client){    
+    	clip.setText( $('fe_text').value );
+  	});
+  	clip.addEventListener('complete', function (client, text) {   
+    	alert("复制成功，您可以粘贴发送给QQ上的好友或QQ群了^_^");
+  	});
+  	clip.glue('clip_button', 'clip_container');
+  }
+</script>
+<style type="text/css">
+body{
+
+font-size:12px;
+
+}
+*{margin:0;padding:0;}
+
+</style>
+
+</head>
+
+<body onLoad="init()">
+<div style="width:560px; height:auto; margin:150px auto;">复制给您的QQ好友或QQ群：<br /><textarea style="width: 550px; height:80px;" name=urlName id="fe_text">JS代码网是你的JS代码库，你要的特效我们都有哦,www.js-css.cn</textarea><br /><span id="clip_container"><button id="clip_button" style="width:128px;height:32px;line-height:26px;font:16px arial;">点击复制分享</button></span></div>
+</body>
+</html>

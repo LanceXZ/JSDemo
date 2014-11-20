@@ -1,0 +1,47 @@
+1.加载jQuery和插件
+1
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+2
+<script type="text/javascript" src="js/jquery-litelighter.js"></script>
+3
+<script type="text/javascript" src="js/jquery-litelighter-extra.js"></script>
+
+2.HTML内容
+01
+<pre class="code" data-lllanguage="js">
+02
+$.litelighter.styles.mystyle = {
+03
+    code: 'background-color:#141414;color:#ffffff;',
+04
+    comment: 'color:#999;',
+05
+    string: 'color:#8F9657;',
+06
+    number: 'color:#CF6745;',
+07
+    keyword: 'color:#6F87A8;',
+08
+    operators: 'color:#9e771e;'
+09
+};
+10
+</pre>
+
+3.函数调用
+1
+<script type="text/javascript">
+2
+$(document).ready(function(){
+3
+ 
+4
+    $('pre').litelighter({     
+5
+        style: 'light',    
+6
+    });
+7
+});
+8
+</script>
